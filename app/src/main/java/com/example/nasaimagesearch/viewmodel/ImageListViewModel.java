@@ -1,9 +1,12 @@
 package com.example.nasaimagesearch.viewmodel;
 
+import com.example.nasaimagesearch.dependencyinjection.DaggerApiComponent;
 import com.example.nasaimagesearch.model.ImageDetailModel;
-import com.example.nasaimagesearch.model.NasaImageSearchServices;
+import com.example.nasaimagesearch.model.NasaImageSearchService;
 
 import java.util.List;
+
+import javax.inject.Inject;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.MutableLiveData;
@@ -19,10 +22,15 @@ public class ImageListViewModel extends ViewModel {
     public MutableLiveData<Boolean> imageLoadError=new MutableLiveData<Boolean>();
     public MutableLiveData<Boolean> loading=new MutableLiveData<Boolean>();
 
-    private NasaImageSearchServices imageSearchServices = NasaImageSearchServices.getInstance();
+    @Inject
+    public NasaImageSearchService imageSearchServices;
 
     private CompositeDisposable disposable = new CompositeDisposable();
 
+    public ImageListViewModel() {
+        super();
+        DaggerApiComponent.create().inject(this);
+    }
     public void fetchImages(String searchTerm, String type){
         loading.setValue(true);
         disposable.add(
