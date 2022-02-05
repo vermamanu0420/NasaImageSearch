@@ -20,9 +20,11 @@ import butterknife.ButterKnife;
 
 public class ImageListAdapter extends RecyclerView.Adapter<ImageListAdapter.ImageViewHolder> {
     private List<ImageDetailModel.Item> imagesList;
+    private final OnItemClickListener listener;
 
-    public ImageListAdapter(List<ImageDetailModel.Item> imagesList) {
+    public ImageListAdapter(List<ImageDetailModel.Item> imagesList, OnItemClickListener listener) {
         this.imagesList = imagesList;
+        this.listener = listener;
     }
 
     public void updateImages(List<ImageDetailModel.Item> newImages) {
@@ -40,7 +42,7 @@ public class ImageListAdapter extends RecyclerView.Adapter<ImageListAdapter.Imag
 
     @Override
     public void onBindViewHolder(@NonNull ImageViewHolder holder, int position) {
-        holder.bind(imagesList.get(position));
+        holder.bind(imagesList.get(position), listener);
 
     }
 
@@ -63,11 +65,12 @@ public class ImageListAdapter extends RecyclerView.Adapter<ImageListAdapter.Imag
             ButterKnife.bind(this, itemView);
         }
 
-        void bind(ImageDetailModel.Item imageItem) {
+        void bind(ImageDetailModel.Item imageItem, final OnItemClickListener listener) {
             imageTitle.setText(imageItem.data.get(0).imageTitle);
             SimpleDateFormat dateFormat = new SimpleDateFormat("dd MMM yyyy");
             imageCreatedDate.setText(dateFormat.format(imageItem.data.get(0).date_created));
             Util.loadImage(imageView, imageItem.links.get(0).href, Util.getProgressDrawable(imageView.getContext()));
+            itemView.setOnClickListener(v -> listener.onItemClick(imageItem));
         }
         
     }

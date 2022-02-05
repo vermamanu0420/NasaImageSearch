@@ -46,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
 
     private ImageListViewModel viewModel;
 
-    private ImageListAdapter adapter = new ImageListAdapter(new ArrayList<>());
+    private ImageListAdapter adapter;
 
 
     @Override
@@ -57,6 +57,9 @@ public class MainActivity extends AppCompatActivity {
         ButterKnife.bind(this);
         viewModel = ViewModelProviders.of(this).get(ImageListViewModel.class);
 
+        adapter = new ImageListAdapter(new ArrayList<>(), item -> {
+            Toast.makeText(this, item.data.get(0).description, Toast.LENGTH_LONG).show();
+        });
 
         imagesList.setLayoutManager(new LinearLayoutManager(this));
         imagesList.setAdapter(adapter);
