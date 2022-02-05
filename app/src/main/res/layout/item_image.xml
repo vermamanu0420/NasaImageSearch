@@ -24,7 +24,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/ImageTitle"
-            android:theme="@style/Title">
+            android:ellipsize="end"
+            android:maxLines="2"
+            android:theme="@style/Title"
+            android:paddingRight="10dp">
 
         </TextView>
 

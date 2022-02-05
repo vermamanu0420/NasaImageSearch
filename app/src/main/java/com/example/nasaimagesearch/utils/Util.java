@@ -19,6 +19,7 @@ public class Util  {
         Glide.with(view.getContext())
                 .setDefaultRequestOptions(options)
                 .load(url)
+                .centerCrop()
                 .into(view);
     }
     public static CircularProgressDrawable getProgressDrawable(Context context){

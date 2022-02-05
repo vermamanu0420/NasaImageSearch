@@ -4,4 +4,5 @@
     <string name="loadingDataErrorMsg">An error has occured while loading the data</string>
     <string name="searchImage">Search for Image</string>
     <string name="searchButtonText">Search</string>
+    <string name="noDataFoundMsg">No Data found</string>
 </resources>

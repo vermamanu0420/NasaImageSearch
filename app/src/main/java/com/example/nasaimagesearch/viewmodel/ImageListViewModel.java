@@ -32,12 +32,11 @@ public class ImageListViewModel extends ViewModel {
                         .subscribeWith(new DisposableSingleObserver<ImageDetailModel>() {
                             @Override
                             public void onSuccess(@NonNull ImageDetailModel imageCollection) {
-                                imageList.setValue(imageCollection.getCollection().items);
-
                                 imageLoadError.setValue(false);
                                 loading.setValue(false);
-                            }
 
+                                imageList.setValue(imageCollection.getCollection().items);
+                            }
                             @Override
                             public void onError(@NonNull Throwable e) {
                                 imageLoadError.setValue(true);
