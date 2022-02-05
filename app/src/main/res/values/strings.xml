@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">NasaImageSearch</string>
+    <string name="ImageTitle">Title</string>
+    <string name="loadingDataErrorMsg">An error has occured while loading the data</string>
 </resources>
