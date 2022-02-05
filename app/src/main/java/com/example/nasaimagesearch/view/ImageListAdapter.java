@@ -8,7 +8,9 @@ import android.widget.TextView;
 
 import com.example.nasaimagesearch.R;
 import com.example.nasaimagesearch.model.ImageDetailModel;
+import com.example.nasaimagesearch.utils.Util;
 
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 import androidx.annotation.NonNull;
@@ -63,8 +65,9 @@ public class ImageListAdapter extends RecyclerView.Adapter<ImageListAdapter.Imag
 
         void bind(ImageDetailModel.Item imageItem) {
             imageTitle.setText(imageItem.data.get(0).imageTitle);
-            imageCreatedDate.setText(imageItem.data.get(0).description);
-           // Util.loadImage(countryImage, country.getFlag(), Util.getProgressDrawable(countryImage.getContext()));
+            SimpleDateFormat dateFormat = new SimpleDateFormat("dd MMM yyyy");
+            imageCreatedDate.setText(dateFormat.format(imageItem.data.get(0).date_created));
+            Util.loadImage(imageView, imageItem.links.get(0).href, Util.getProgressDrawable(imageView.getContext()));
         }
         
     }
