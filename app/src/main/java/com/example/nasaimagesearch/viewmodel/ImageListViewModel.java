@@ -21,6 +21,7 @@ public class ImageListViewModel extends ViewModel {
     public MutableLiveData<List<ImageDetailModel.Item>> imageList = new MutableLiveData<List<ImageDetailModel.Item>>();
     public MutableLiveData<Boolean> imageLoadError=new MutableLiveData<Boolean>();
     public MutableLiveData<Boolean> loading=new MutableLiveData<Boolean>();
+    public MutableLiveData<ImageDetailModel.Item> selectedImage = new MutableLiveData<ImageDetailModel.Item>();
 
     @Inject
     public NasaImageSearchService imageSearchServices;
@@ -54,6 +55,10 @@ public class ImageListViewModel extends ViewModel {
                         })
 
         );
+    }
+
+    public void setSelectedImage(ImageDetailModel.Item item){
+        selectedImage.setValue(item);
     }
 
 }

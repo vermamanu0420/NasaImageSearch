@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".view.ImageDetailFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/fullImage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            android:maxHeight="450dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <TextView
+            android:id="@+id/imageDetailDate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Date goes here"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="10dp"
+            app:layout_constraintBottom_toTopOf="@+id/imageDetailTitle"
+            app:layout_constraintStart_toStartOf="parent"
+            android:textStyle="italic"
+            app:layout_constraintTop_toBottomOf="@+id/fullImage"
+            android:gravity="end" />
+
+        <TextView
+            android:id="@+id/imageDetailTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/ImageTitle"
+            android:textSize="25sp"
+            android:textStyle="bold"
+            android:padding="10dp"
+            app:layout_constraintTop_toBottomOf="@+id/imageDetailDate" />
+
+        <TextView
+            android:id="@+id/imageDetailDescriptionTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Description:"
+            android:textSize="20sp"
+            android:textStyle="bold|italic"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginBottom="0dp"
+            app:layout_constraintTop_toBottomOf="@+id/imageDetailTitle" />
+
+        <TextView
+            android:id="@+id/imageDetailDescription"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Description"
+            android:textSize="20sp"
+            android:padding="10dp"
+            app:layout_constraintTop_toBottomOf="@+id/imageDetailDescriptionTitle" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</ScrollView>

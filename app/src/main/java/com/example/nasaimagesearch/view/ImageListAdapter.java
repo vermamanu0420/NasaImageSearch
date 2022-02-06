@@ -68,8 +68,8 @@ public class ImageListAdapter extends RecyclerView.Adapter<ImageListAdapter.Imag
         void bind(ImageDetailModel.Item imageItem, final OnItemClickListener listener) {
             imageTitle.setText(imageItem.data.get(0).imageTitle);
             SimpleDateFormat dateFormat = new SimpleDateFormat("dd MMM yyyy");
-            imageCreatedDate.setText(dateFormat.format(imageItem.data.get(0).date_created));
-            Util.loadImage(imageView, imageItem.links.get(0).href, Util.getProgressDrawable(imageView.getContext()));
+            imageCreatedDate.setText(Util.dateToStringConversion(imageItem.data.get(0).date_created,"dd MMM yyyy"));
+            Util.loadImageCenterCrop(imageView, imageItem.links.get(0).href, Util.getProgressDrawable(imageView.getContext()));
             itemView.setOnClickListener(v -> listener.onItemClick(imageItem));
         }
         

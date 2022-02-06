@@ -1,8 +1,9 @@
 <resources>
-    <string name="app_name">NasaImageSearch</string>
+    <string name="app_name">Nasa Image Search</string>
     <string name="ImageTitle">Title</string>
     <string name="loadingDataErrorMsg">An error has occured while loading the data</string>
     <string name="searchImage">Search for Image</string>
     <string name="searchButtonText">Search</string>
     <string name="noDataFoundMsg">No Data found</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
