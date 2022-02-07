@@ -1,6 +1,7 @@
-package com.example.nasaimagesearch.model;
+package com.example.nasaimagesearch.apiservice;
 
 import com.example.nasaimagesearch.dependencyinjection.DaggerApiComponent;
+import com.example.nasaimagesearch.model.ImageDetailModel;
 
 import javax.inject.Inject;
 

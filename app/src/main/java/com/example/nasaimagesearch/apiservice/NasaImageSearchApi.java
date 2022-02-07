@@ -1,4 +1,6 @@
-package com.example.nasaimagesearch.model;
+package com.example.nasaimagesearch.apiservice;
+
+import com.example.nasaimagesearch.model.ImageDetailModel;
 
 import io.reactivex.Single;
 import retrofit2.Call;

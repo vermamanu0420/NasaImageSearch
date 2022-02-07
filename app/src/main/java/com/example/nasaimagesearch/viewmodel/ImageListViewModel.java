@@ -1,10 +1,8 @@
 package com.example.nasaimagesearch.viewmodel;
 
-import android.widget.Toast;
-
 import com.example.nasaimagesearch.dependencyinjection.DaggerApiComponent;
 import com.example.nasaimagesearch.model.ImageDetailModel;
-import com.example.nasaimagesearch.model.NasaImageSearchService;
+import com.example.nasaimagesearch.apiservice.NasaImageSearchService;
 
 import java.util.ArrayList;
 import java.util.List;

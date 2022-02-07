@@ -1,7 +1,7 @@
 package com.example.nasaimagesearch.dependencyinjection;
 
-import com.example.nasaimagesearch.model.NasaImageSearchApi;
-import com.example.nasaimagesearch.model.NasaImageSearchService;
+import com.example.nasaimagesearch.apiservice.NasaImageSearchApi;
+import com.example.nasaimagesearch.apiservice.NasaImageSearchService;
 
 import dagger.Module;
 import dagger.Provides;
