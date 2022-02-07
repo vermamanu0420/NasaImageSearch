@@ -23,4 +23,31 @@
         <item name="android:textSize">14sp</item>
     </style>
 
+    <style name="ImageDateStyle">
+        <item name="android:textStyle">italic</item>
+        <item name="android:gravity">end</item>
+    </style>
+
+    <style name="ImageDetailTitleStyle">
+        <item name="android:textSize">25sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:padding">10dp</item>
+    </style>
+
+    <style name="ImageDescriptionTitleStyle">
+        <item name="android:textSize">20sp</item>
+        <item name="android:textStyle">bold|italic</item>
+    </style>
+
+    <style name="ImageDetailDescriptionStyle">
+        <item name="android:textSize">20sp</item>
+        <item name="android:padding">10dp</item>
+    </style>
+
+    <style name="SearchBoxStyle">
+        <item name="android:padding">10dp</item>
+    </style>
+
+
+
 </resources>

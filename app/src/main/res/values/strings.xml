@@ -5,5 +5,6 @@
     <string name="searchImage">Search for Image</string>
     <string name="searchButtonText">Search</string>
     <string name="noDataFoundMsg">No Data found</string>
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="datePlaceHolder">Created Date</string>
+    <string name="description">Description:</string>
 </resources>

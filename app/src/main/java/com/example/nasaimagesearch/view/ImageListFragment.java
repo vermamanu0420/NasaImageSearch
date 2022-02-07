@@ -2,6 +2,7 @@ package com.example.nasaimagesearch.view;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -42,11 +43,10 @@ public class ImageListFragment extends Fragment {
     @BindView(R.id.searchTextview)
     EditText searchTerm;
 
-
     private ImageListViewModel viewModel;
-
     private ImageListAdapter adapter;
 
+    private int currentPage = 1;
 
 
     @Override
@@ -72,10 +72,8 @@ public class ImageListFragment extends Fragment {
 
         observerViewModel();
 
-
-
         searchButton.setOnClickListener(v -> {
-            viewModel.fetchImages(String.valueOf(searchTerm.getText()), "image");
+            viewModel.fetchImages(String.valueOf(searchTerm.getText()), "image", currentPage=1);
         });
 
         searchTerm.setOnEditorActionListener((v, actionId, event) -> {
@@ -84,8 +82,23 @@ public class ImageListFragment extends Fragment {
             }
             return false;
         });
-        return view;
 
+        imagesList.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy) {
+                super.onScrolled(recyclerView, dx, dy);
+                if(!recyclerView.canScrollVertically(1)) {
+                    currentPage++;
+                    if (currentPage <= 100) {
+                        Toast.makeText(getActivity(), "Loading more data", Toast.LENGTH_LONG).show();
+                        viewModel.fetchImages(String.valueOf(searchTerm.getText()), "image", currentPage);
+                    }
+                    else
+                        Toast.makeText(getActivity(),"No More Data Available",Toast.LENGTH_LONG).show();
+                }
+            }
+        });
+        return view;
     }
 
     private void observerViewModel() {

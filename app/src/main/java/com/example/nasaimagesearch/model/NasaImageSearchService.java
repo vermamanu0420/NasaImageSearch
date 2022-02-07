@@ -24,7 +24,7 @@ public class NasaImageSearchService {
         return instance;
     }
 
-    public Single<ImageDetailModel> getImages(String searchString, String type){
-        return api.getImages(searchString, type);
+    public Single<ImageDetailModel> getImages(String searchString, String type, int page){
+        return api.getImages(searchString, type, page);
     }
 }

@@ -10,5 +10,6 @@ public interface NasaImageSearchApi {
     @GET("search")
     Single<ImageDetailModel> getImages (
             @Query("q") String searchTerm,
-            @Query("media_type") String dataType);
+            @Query("media_type") String dataType,
+            @Query("page") int page);
 }

@@ -1,9 +1,12 @@
 package com.example.nasaimagesearch.viewmodel;
 
+import android.widget.Toast;
+
 import com.example.nasaimagesearch.dependencyinjection.DaggerApiComponent;
 import com.example.nasaimagesearch.model.ImageDetailModel;
 import com.example.nasaimagesearch.model.NasaImageSearchService;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -22,6 +25,7 @@ public class ImageListViewModel extends ViewModel {
     public MutableLiveData<Boolean> imageLoadError=new MutableLiveData<Boolean>();
     public MutableLiveData<Boolean> loading=new MutableLiveData<Boolean>();
     public MutableLiveData<ImageDetailModel.Item> selectedImage = new MutableLiveData<ImageDetailModel.Item>();
+    private ArrayList<ImageDetailModel.Item> currentImageList = new ArrayList<>();
 
     @Inject
     public NasaImageSearchService imageSearchServices;
@@ -32,10 +36,10 @@ public class ImageListViewModel extends ViewModel {
         super();
         DaggerApiComponent.create().inject(this);
     }
-    public void fetchImages(String searchTerm, String type){
+    public void fetchImages(String searchTerm, String type, int page){
         loading.setValue(true);
         disposable.add(
-                imageSearchServices.getImages(searchTerm, type)
+                imageSearchServices.getImages(searchTerm, type, page)
                         .subscribeOn(Schedulers.newThread())
                         .observeOn(AndroidSchedulers.mainThread())
                         .subscribeWith(new DisposableSingleObserver<ImageDetailModel>() {
@@ -43,8 +47,10 @@ public class ImageListViewModel extends ViewModel {
                             public void onSuccess(@NonNull ImageDetailModel imageCollection) {
                                 imageLoadError.setValue(false);
                                 loading.setValue(false);
-
-                                imageList.setValue(imageCollection.getCollection().items);
+                                if (page == 1)
+                                    currentImageList.clear();
+                                currentImageList.addAll(imageCollection.getCollection().items);
+                                imageList.setValue(currentImageList);
                             }
                             @Override
                             public void onError(@NonNull Throwable e) {
