@@ -59,7 +59,7 @@ public class ImageListFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_image_list, container, false);
-        ButterKnife.bind(this,view);
+        ButterKnife.bind(this, view);
         viewModel = ViewModelProviders.of(getActivity()).get(ImageListViewModel.class);
 
         adapter = new ImageListAdapter(new ArrayList<>(), item -> {
@@ -73,7 +73,7 @@ public class ImageListFragment extends Fragment {
         observerViewModel();
 
         searchButton.setOnClickListener(v -> {
-            viewModel.fetchImages(String.valueOf(searchTerm.getText()), "image", currentPage=1);
+            viewModel.fetchImages(String.valueOf(searchTerm.getText()), "image", currentPage = 1);
         });
 
         searchTerm.setOnEditorActionListener((v, actionId, event) -> {
@@ -87,14 +87,13 @@ public class ImageListFragment extends Fragment {
             @Override
             public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy) {
                 super.onScrolled(recyclerView, dx, dy);
-                if(!recyclerView.canScrollVertically(1)) {
+                if (!recyclerView.canScrollVertically(1)) {
                     currentPage++;
                     if (currentPage <= 100) {
                         Toast.makeText(getActivity(), "Loading more data", Toast.LENGTH_LONG).show();
                         viewModel.fetchImages(String.valueOf(searchTerm.getText()), "image", currentPage);
-                    }
-                    else
-                        Toast.makeText(getActivity(),"No More Data Available",Toast.LENGTH_LONG).show();
+                    } else
+                        Toast.makeText(getActivity(), "No More Data Available", Toast.LENGTH_LONG).show();
                 }
             }
         });
@@ -103,12 +102,12 @@ public class ImageListFragment extends Fragment {
 
     private void observerViewModel() {
 
-        viewModel.imageList.observe(getViewLifecycleOwner(),items -> {
+        viewModel.imageList.observe(getViewLifecycleOwner(), items -> {
             listError.setVisibility(View.GONE);
             adapter.updateImages(items);
             loadingView.setVisibility(View.GONE);
 
-            if (items == null || items.size() == 0){
+            if (items == null || items.size() == 0) {
                 listError.setVisibility(View.VISIBLE);
                 listError.setText(R.string.noDataFoundMsg);
             }
@@ -120,11 +119,11 @@ public class ImageListFragment extends Fragment {
             }
 
         });
+
         viewModel.loading.observe(getViewLifecycleOwner(), isLoading -> {
             if (isLoading != null) {
                 loadingView.setVisibility(isLoading ? View.VISIBLE : View.GONE);
             }
         });
-
     }
 }

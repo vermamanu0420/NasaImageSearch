@@ -22,8 +22,8 @@ import io.reactivex.schedulers.Schedulers;
 public class ImageListViewModel extends ViewModel {
 
     public MutableLiveData<List<ImageDetailModel.Item>> imageList = new MutableLiveData<List<ImageDetailModel.Item>>();
-    public MutableLiveData<Boolean> imageLoadError=new MutableLiveData<Boolean>();
-    public MutableLiveData<Boolean> loading=new MutableLiveData<Boolean>();
+    public MutableLiveData<Boolean> imageLoadError = new MutableLiveData<Boolean>();
+    public MutableLiveData<Boolean> loading = new MutableLiveData<Boolean>();
     public MutableLiveData<ImageDetailModel.Item> selectedImage = new MutableLiveData<ImageDetailModel.Item>();
     private ArrayList<ImageDetailModel.Item> currentImageList = new ArrayList<>();
 
@@ -36,7 +36,8 @@ public class ImageListViewModel extends ViewModel {
         super();
         DaggerApiComponent.create().inject(this);
     }
-    public void fetchImages(String searchTerm, String type, int page){
+
+    public void fetchImages(String searchTerm, String type, int page) {
         loading.setValue(true);
         disposable.add(
                 imageSearchServices.getImages(searchTerm, type, page)
@@ -52,6 +53,7 @@ public class ImageListViewModel extends ViewModel {
                                 currentImageList.addAll(imageCollection.getCollection().items);
                                 imageList.setValue(currentImageList);
                             }
+
                             @Override
                             public void onError(@NonNull Throwable e) {
                                 imageLoadError.setValue(true);
@@ -59,11 +61,10 @@ public class ImageListViewModel extends ViewModel {
                                 e.printStackTrace();
                             }
                         })
-
         );
     }
 
-    public void setSelectedImage(ImageDetailModel.Item item){
+    public void setSelectedImage(ImageDetailModel.Item item) {
         selectedImage.setValue(item);
     }
 
