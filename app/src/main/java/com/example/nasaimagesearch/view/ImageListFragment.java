@@ -102,7 +102,7 @@ public class ImageListFragment extends Fragment {
 
     private void observerViewModel() {
 
-        viewModel.imageList.observe(getViewLifecycleOwner(), items -> {
+        viewModel.mutableImageList.observe(getViewLifecycleOwner(), items -> {
             listError.setVisibility(View.GONE);
             adapter.updateImages(items);
             loadingView.setVisibility(View.GONE);

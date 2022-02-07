@@ -17,14 +17,14 @@ public class NasaImageSearchService {
         DaggerApiComponent.create().inject(this);
     }
 
-    public static NasaImageSearchService getInstance(){
+    public static NasaImageSearchService getInstance() {
         if (instance == null) {
             instance = new NasaImageSearchService();
         }
         return instance;
     }
 
-    public Single<ImageDetailModel> getImages(String searchString, String type, int page){
+    public Single<ImageDetailModel> getImages(String searchString, String type, int page) {
         return api.getImages(searchString, type, page);
     }
 }

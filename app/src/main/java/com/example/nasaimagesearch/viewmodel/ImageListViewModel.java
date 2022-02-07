@@ -21,7 +21,7 @@ import io.reactivex.schedulers.Schedulers;
 
 public class ImageListViewModel extends ViewModel {
 
-    public MutableLiveData<List<ImageDetailModel.Item>> imageList = new MutableLiveData<List<ImageDetailModel.Item>>();
+    public MutableLiveData<List<ImageDetailModel.Item>> mutableImageList = new MutableLiveData<List<ImageDetailModel.Item>>();
     public MutableLiveData<Boolean> imageLoadError = new MutableLiveData<Boolean>();
     public MutableLiveData<Boolean> loading = new MutableLiveData<Boolean>();
     public MutableLiveData<ImageDetailModel.Item> selectedImage = new MutableLiveData<ImageDetailModel.Item>();
@@ -51,7 +51,7 @@ public class ImageListViewModel extends ViewModel {
                                 if (page == 1)
                                     currentImageList.clear();
                                 currentImageList.addAll(imageCollection.getCollection().items);
-                                imageList.setValue(currentImageList);
+                                mutableImageList.setValue(currentImageList);
                             }
 
                             @Override
