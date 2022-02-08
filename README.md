@@ -1,1 +1,31 @@
-"# NasaImageSearch" 
+<h1 align="center">Nasa Search API</h1>
+
+## App Architecture
+
+This app uses MVVM achitecture(Model View ViewModel) which is also recomended by google which facilitates the separation between the view and the business logic or the backend, Here viewmodel is responsible for exposing only the data objects(LiveData oe Mutable data) to the view and view responds to the changes to the data rather than caring about the businesslogic. 
+
+#### Components of MVVM:
+
+* **Model:** This layer is responsible for the abstraction of the data sources. Model and ViewModel work together to get and save the data.
+
+* **View:** The purpose of this layer is to inform the ViewModel about the user’s action. This layer observes the ViewModel and does not contain any kind of application logic.
+
+* **ViewModel:** It exposes those data streams which are relevant to the View. Moreover, it servers as a link between the Model and the View.
+
+
+## Libraries used
+
+* **Dagger2:** Dagger2 for dependency injection. Dagger here help us in automatic code generation by generating or injecting the dependencies for us into the class that requires those dependencies. Dagger handles all the instance creation and injection for us.
+
+* **Retrofit:**  Retrofit is a popular and fast Library for remote server communication. Retrofit supports both synchronous, asynchronous network requests and also support dynamic URLs. It also caches responses to avoid sending duplicate requests and provide better user experience.
+
+* **Butter Knife:** Field and method binding for Android views which uses annotation processing to generate boilerplate code for you. Eliminate `findViewById` calls by using `@BindView` on fields.
+
+* **Glide:** Used Glide for seamless image loading. Glide is a fast and efficient open source media management and image loading framework for Android. Glide handles all the download proces and memory caching as well to avoid repeating downloads.
+
+* **RxJava:** RxJava is a JVM library that uses observable sequences to perform asynchronous and event-based programming. Its primary building blocks are Observer, and Observables and I used them to complete asynchronous tasks to observe the Api data list and update the view when ever there were changes in the observables in our project.
+
+
+### Build/Run
+
+Unzip the project and Open the Project using Android Studio and Build/Run the project either using an emulator or an actual android device.
