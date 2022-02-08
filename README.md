@@ -1,8 +1,8 @@
 <h1 align="center">Nasa Search API</h1>
 
-## App Architecture
+## App Architecture 
 
-This app uses MVVM achitecture(Model View ViewModel) which is also recomended by google which facilitates the separation between the view and the business logic or the backend, Here viewmodel is responsible for exposing only the data objects(LiveData oe Mutable data) to the view and view responds to the changes to the data rather than caring about the businesslogic. 
+This app uses MVVM architecture (Model View ViewModel) which is also recommended by google which facilitates the separation between the view and the business logic or the backend, Here viewmodel is responsible for exposing only the data objects(LiveData oe Mutable data) to the view and view responds to the changes to the data rather than caring about the businesslogic. 
 
 #### Components of MVVM:
 
